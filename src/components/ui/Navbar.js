@@ -23,9 +23,6 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 // Importo contexto 
 import { ThemeContext } from '../../context/ThemeContext';
 
-// CSS
-import '../../css/Navbar.css';
-
 const pages = [
     { name: 'Pokedex', route: '/pokedex' },
 ];
@@ -113,9 +110,13 @@ export const Navbar = () => {
                 }}
             >
                 {pages.map(({name, route}) => (
-                    <MenuItem key={name} onClick={ () => navigate(route) }>
+                    <MenuItem key={name} onClick={ () => {
+                        handleCloseNavMenu();
+                        navigate(route);
+                    }}>
                         <Typography textAlign="center">{name}</Typography>
                     </MenuItem>
+                    
                 ))}
             </Menu>
             </Box>

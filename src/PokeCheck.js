@@ -1,7 +1,5 @@
 import React from 'react';
 import { useState } from "react";
-import Button from '@mui/material/Button'
-import Navbar from './components/ui/Navbar';
 
 // For themes
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -12,6 +10,9 @@ import { ThemeContext } from './context/ThemeContext';
 
 // Router
 import { AppRouter } from './routers/AppRouter';
+
+// CSS
+import './css/styles.css';
 
 const PokeCheck = () => {
     

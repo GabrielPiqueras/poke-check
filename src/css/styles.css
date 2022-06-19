@@ -1,0 +1,23 @@
+
+/* #navbar {
+    margin-bottom: 1.5em;
+} */
+
+html, body {
+    margin: 0px;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.MuiPaper-root {
+    border-radius: 0px!important;
+}
+
+#search-btn {
+    height: 50px;
+    width: 50px;
+}
