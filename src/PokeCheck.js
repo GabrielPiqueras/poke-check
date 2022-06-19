@@ -1,11 +1,31 @@
 import React from 'react';
+import { useState } from "react";
 import Button from '@mui/material/Button'
+import Navbar from './components/ui/Navbar';
 
-export const PokeCheck = () => {
+// For themes
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { dark, light } from './data/themes';
+
+// Importo contexto 
+import { ThemeContext } from './context/ThemeContext';
+
+// Router
+import { AppRouter } from './routers/AppRouter';
+
+const PokeCheck = () => {
+    
+    // The light theme is used by default
+    const darkIsEnabled = JSON.parse(localStorage.getItem('isDarkTheme'));
+    const [ isDarkTheme, setIsDarkTheme ] = useState(darkIsEnabled || false);
+    
     return (
-        <div>
-            <Button variant="contained">Hello World</Button>
-            <h1>PokeCheck</h1>
-        </div>
+      <ThemeContext.Provider value={{ isDarkTheme, setIsDarkTheme }}>
+        <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}>
+          <AppRouter />     
+        </ThemeProvider>
+      </ThemeContext.Provider>
     )
 }
+
+export default PokeCheck;
