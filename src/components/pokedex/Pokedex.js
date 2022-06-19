@@ -64,6 +64,7 @@ export const Pokedex = () => {
                         placeholder="pikachu"
                         type="search"
                         autoFocus
+                        required
                       />
                       <Button id="search-btn" type="submit" variant="contained" startIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}>
                       </Button>
