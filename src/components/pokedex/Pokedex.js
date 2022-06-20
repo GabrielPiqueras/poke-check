@@ -33,65 +33,36 @@ const Item = styled(Paper)(({ theme }) => ({
 export const Pokedex = () => {
 
     const inputName = useRef();
-        
     const navigation = useNavigate();
-    const search = useLocation().search;
-    const name = new URLSearchParams(search).get('q');
 
-    const [ pokemon, setPokemon ] = useState(null);
-
-    useEffect(() => {
-      getPokemonByName(name).then(pokemon => setPokemon(pokemon));
-    }, [ name ]);
-    
-    console.log(pokemon);
-
-    // const { data, loading } = useFetch(`https://pokeapi.co/api/v2/pokemon/${encodeURI(name)}/`);
-    
     const handleSubmit = (e) => {      
       e.preventDefault();
 
       const name = document.querySelector('#pokemon').value;
-      alert(name)
-      navigation({
-        pathname: '/pokedex',
-        search: `q=${name}`
-      });
+      navigation(`/pokedex/${name}`);
     }
-
+  
+  // En cualquier caso deberíamos llamar al then() y mostrar lo que devuelve:
     return (
         <Box sx={{ flexGrow: 1 }} style={{display: 'flex'}}>
           <Grid container spacing={0}>
             <Grid item xs={12}>
-              {
-                (!pokemon)
-                ?
-                  (<Item>
-                    <form onSubmit={ handleSubmit }>
-                      <TextField
-                        id="pokemon"
-                        ref={ inputName }
-                        placeholder="pikachu"
-                        type="search"
-                        autoFocus
-                        required
-                      />
-
-                      <Button id="search-btn" type="submit" variant="contained" startIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}>
-                      </Button>
-                    </form>
-                  </Item>)
-                :
-                  (<div>
-                    <h3>
-                      Información de { name }
-                    </h3>
-
-                    <pre>
-                      {/* { JSON.stringify(pokemon) } */}
-                    </pre>
-                  </div>)
-              }
+              <Item>
+                  <form onSubmit={ handleSubmit }>
+                  <TextField
+                      id="pokemon"
+                      ref={ inputName }
+                      placeholder="pikachu"
+                      type="search"
+                      autoFocus
+                      required
+                  />
+                  <Button id="search-btn" type="submit" variant="contained" startIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}>
+                  </Button>
+                  </form>
+              </Item>
+            
+          
             </Grid>
           </Grid>
         </Box>

@@ -26,6 +26,7 @@ import { ThemeContext } from '../../context/ThemeContext';
 
 const pages = [
     { name: 'Pokedex', route: '/pokedex' },
+    { name: 'Otro', route: '/otro' },
 ];
 const settings = [
     { name: 'Profile', route: '/' },
