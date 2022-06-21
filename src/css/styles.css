@@ -21,3 +21,23 @@ html, body {
     height: 50px;
     width: 50px;
 }
+
+/* Items Grid */
+
+.MuiPaper-root {
+    box-shadow: none!important;
+}
+
+/* Pokemon info */
+
+#pokemon-name {
+    text-transform: capitalize;
+}
+
+#pokemon-order {
+    font-style: italic;
+}
+
+#pokemon-img {
+    width: 100%;
+}

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 import { useRef } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -8,16 +7,11 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useFetch } from '../../hooks/useFetch';
 // Icons
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 // Router
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useForm } from '../../hooks/useForm';
-
-// Helpers
-import { getPokemonByName } from '../../helpers/getPokemonByName';
+import { useNavigate } from 'react-router-dom';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -61,8 +55,6 @@ export const Pokedex = () => {
                   </Button>
                   </form>
               </Item>
-            
-          
             </Grid>
           </Grid>
         </Box>
