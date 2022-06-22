@@ -38,10 +38,10 @@ export const Pokedex = () => {
   
   // En cualquier caso deberíamos llamar al then() y mostrar lo que devuelve:
     return (
-        <Box sx={{ flexGrow: 1 }} style={{display: 'flex'}}>
+        <Box sx={{ flexGrow: 1 }} style={{display: 'flex'}} className='mitoto'>
           <Grid container spacing={0}>
             <Grid item xs={12}>
-              <Item>
+              <Item sx={{ bgcolor: 'secondary.main' }}>
                   <form onSubmit={ handleSubmit }>
                   <TextField
                       id="pokemon"
