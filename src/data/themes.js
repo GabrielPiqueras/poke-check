@@ -2,8 +2,11 @@
 export const light = {
   palette: {
     mode: "light",
-    secondary: {
-      main: '#ffff00'
+    background: {
+      paper: '#FFFFFF',
+    },
+    color: {
+      paper: '#464646'
     }
   },
 };
@@ -11,8 +14,11 @@ export const light = {
 export const dark = {
   palette: {
     mode: "dark",
-    secondary: {
-      main: '#00ffff'
+    background: {
+      paper: '#262b32',
+    },
+    color: {
+      paper: '#FFFFFF'
     }
   },
 };

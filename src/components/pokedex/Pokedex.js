@@ -32,7 +32,7 @@ export const Pokedex = () => {
     const handleSubmit = (e) => {      
       e.preventDefault();
 
-      const name = document.querySelector('#pokemon').value;
+      const name = document.querySelector('#pokemon').value.toLowerCase();
       navigation(`/pokedex/${name}`);
     }
   
@@ -41,18 +41,18 @@ export const Pokedex = () => {
         <Box sx={{ flexGrow: 1 }} style={{display: 'flex'}}>
           <Grid container spacing={0}>
             <Grid item xs={12}>
-              <Item sx={{ bgcolor: 'primary.main' }}>
+              <Item>
                   <form onSubmit={ handleSubmit }>
-                  <TextField
-                      id="pokemon"
-                      ref={ inputName }
-                      placeholder="pikachu"
-                      type="search"
-                      autoFocus
-                      required
-                  />
-                  <Button id="search-btn" type="submit" variant="contained" startIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}>
-                  </Button>
+                    <TextField
+                        id="pokemon"
+                        ref={ inputName }
+                        placeholder="pikachu"
+                        type="search"
+                        autoFocus
+                        required
+                    />
+                    <Button id="search-btn" type="submit" variant="contained" startIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}>
+                    </Button>
                   </form>
               </Item>
             </Grid>

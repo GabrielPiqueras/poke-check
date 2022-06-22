@@ -40,21 +40,19 @@ theme.typography.h3 = {
   };
 
 
-
-
 const Item = styled(Paper)(({ theme }) => ({
+    color: theme.palette.color.paper,
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
-    // textAlign: 'center',
-    color: theme.palette.text.secondary,
+    // color: theme.palette.text.secondary,
 }));
+
 
 export const PokemonInfo = () => {
 
     // Obtengo el nombre
     const { name } = useParams();
-
     const { data, loading, error } = useFetch(`https://pokeapi.co/api/v2/pokemon/${encodeURI(name)}/`);
 
     const {
@@ -76,7 +74,7 @@ export const PokemonInfo = () => {
     }
 
     return (
-        <Grid container spacing={0} style={{maxWidth: '85%', margin: '0 auto'}}>
+        <Grid id='pokemon-page' container spacing={0} sx={{ bgcolor: 'background.paper', color: 'color.paper' }}>
             {
                 (loading)
                 ?
@@ -92,14 +90,14 @@ export const PokemonInfo = () => {
                             {/* Nombre y número */}
                             <Grid container spacing={0}>
                                 <Grid item xs={10}>
-                                    <Item>
+                                    <Item sx={{ color: 'color.paper' }}>
                                         <ThemeProvider theme={theme}>
                                             <Typography id="pokemon-name" variant="h3">{ name }</Typography>
                                         </ThemeProvider>
                                     </Item>
                                 </Grid>
                                 <Grid item xs={2}>
-                                    <Item>
+                                    <Item sx={{ color: 'color.paper' }}>
                                         <ThemeProvider theme={theme}>
                                             <Typography id="pokemon-order" variant="h3">#{ order }</Typography>
                                         </ThemeProvider>
@@ -116,7 +114,7 @@ export const PokemonInfo = () => {
                                 Datos aqui
                             </Grid>
                             <Grid item xs={12} sm={4} md={3}>
-                                <Item style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                <Item sx={{ color: 'color.paper' }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                                     <img id='pokemon-img' src={sprites.other.dream_world.front_default} alt={name} />
 
                                     <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -132,7 +130,7 @@ export const PokemonInfo = () => {
                             {/* Titulo stats */}
                             <Grid container spacing={0}>
                                 <Grid item xs={12}>
-                                    <Item>
+                                    <Item sx={{ color: 'color.paper' }}>
                                         <ThemeProvider theme={theme}>
                                             <Typography id="pokemon-name" variant="h3">Stats</Typography>
                                         </ThemeProvider>
@@ -160,10 +158,10 @@ export const PokemonInfo = () => {
                                                         key={name}
                                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                                     >
-                                                        <TableCell component="th" scope="row">
+                                                        <TableCell component="th" scope="row" sx={{ color: 'color.paper' }}>
                                                             { name }
                                                         </TableCell>
-                                                        <TableCell align="right">{ base_stat }</TableCell>
+                                                        <TableCell align="right" sx={{ color: 'color.paper' }}>{ base_stat }</TableCell>
                                                     </TableRow>
                                                 ))}
                                                 </TableBody>
