@@ -88,94 +88,94 @@ export const PokemonInfo = () => {
                 :
                     (!error && data)
                     ?
-                    <>
-                        {/* Nombre y número */}
-                        <Grid container spacing={0}>
-                            <Grid item xs={10}>
-                                <Item>
-                                    <ThemeProvider theme={theme}>
-                                        <Typography id="pokemon-name" variant="h3">{ name }</Typography>
-                                    </ThemeProvider>
-                                </Item>
+                        <>
+                            {/* Nombre y número */}
+                            <Grid container spacing={0}>
+                                <Grid item xs={10}>
+                                    <Item>
+                                        <ThemeProvider theme={theme}>
+                                            <Typography id="pokemon-name" variant="h3">{ name }</Typography>
+                                        </ThemeProvider>
+                                    </Item>
+                                </Grid>
+                                <Grid item xs={2}>
+                                    <Item>
+                                        <ThemeProvider theme={theme}>
+                                            <Typography id="pokemon-order" variant="h3">#{ order }</Typography>
+                                        </ThemeProvider>
+                                    </Item>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={2}>
-                                <Item>
-                                    <ThemeProvider theme={theme}>
-                                        <Typography id="pokemon-order" variant="h3">#{ order }</Typography>
-                                    </ThemeProvider>
-                                </Item>
-                            </Grid>
-                        </Grid>
-                        
-                        <Grid item xs={12}>
-                            <Divider />
-                        </Grid>
-
-                        {/* Datos principales y foto */}
-                        <Grid item xs={12} sm={8} md={9}>
-                            Datos aqui
-                        </Grid>
-                        <Grid item xs={12} sm={4} md={3}>
-                            <Item style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                                <img id='pokemon-img' src={sprites.other.dream_world.front_default} alt={name} />
-
-                                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                    {
-                                        types.map(({type: { name }}) => {
-                                            return <img key={name} style={{maxWidth: '15%', margin: '5% 3%'}} id='pokemon-img' src={`/assets/types/${name}.svg`} alt={name} />
-                                        })
-                                    }
-                                </div>
-                            </Item>
-                        </Grid>
-
-                        {/* Titulo stats */}
-                        <Grid container spacing={0}>
+                            
                             <Grid item xs={12}>
-                                <Item>
-                                    <ThemeProvider theme={theme}>
-                                        <Typography id="pokemon-name" variant="h3">Stats</Typography>
-                                    </ThemeProvider>
-                                </Item>
+                                <Divider />
                             </Grid>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Divider />
-                        </Grid>
 
-                        {/* Tabla stats */}
-                        <Grid container spacing={0}>
-                            <Grid item xs={12} sm={6}>
-                                <Item>
-                                    <TableContainer component={Paper} sx={{ width: '100%' }}>
-                                        <Table aria-label="simple table">
-                                            <TableHead>
-                                                <TableRow>
-                                                    {/*  */}
-                                                </TableRow>
-                                            </TableHead>
-                                            <TableBody>
-                                            {stats.map(({stat: { name }, base_stat}) => (
-                                                <TableRow
-                                                    key={name}
-                                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                                >
-                                                    <TableCell component="th" scope="row">
-                                                        { name }
-                                                    </TableCell>
-                                                    <TableCell align="right">{ base_stat }</TableCell>
-                                                </TableRow>
-                                            ))}
-                                            </TableBody>
-                                        </Table>
-                                    </TableContainer>
+                            {/* Datos principales y foto */}
+                            <Grid item xs={12} sm={8} md={9}>
+                                Datos aqui
+                            </Grid>
+                            <Grid item xs={12} sm={4} md={3}>
+                                <Item style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                    <img id='pokemon-img' src={sprites.other.dream_world.front_default} alt={name} />
+
+                                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                        {
+                                            types.map(({type: { name }}) => {
+                                                return <img key={name} style={{maxWidth: '15%', margin: '5% 3%'}} id='pokemon-img' src={`/assets/types/${name}.svg`} alt={name} />
+                                            })
+                                        }
+                                    </div>
                                 </Item>
                             </Grid>
-                            <Grid item xs={12} sm={6} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                                <img style={{ maxWidth: '30%' }} src='https://img2.freepng.es/20180630/kll/kisspng-radar-chart-radar-chart-clip-art-pentagono-5b37fb325ad6f3.1245669015303954423721.jpg' alt='graphic' />
+
+                            {/* Titulo stats */}
+                            <Grid container spacing={0}>
+                                <Grid item xs={12}>
+                                    <Item>
+                                        <ThemeProvider theme={theme}>
+                                            <Typography id="pokemon-name" variant="h3">Stats</Typography>
+                                        </ThemeProvider>
+                                    </Item>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </>
+                            <Grid item xs={12}>
+                                <Divider />
+                            </Grid>
+
+                            {/* Tabla stats */}
+                            <Grid container spacing={0}>
+                                <Grid item xs={12} sm={6}>
+                                    <Item>
+                                        <TableContainer component={Paper} sx={{ width: '100%' }}>
+                                            <Table aria-label="simple table">
+                                                <TableHead>
+                                                    <TableRow>
+                                                        {/*  */}
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                {stats.map(({stat: { name }, base_stat}) => (
+                                                    <TableRow
+                                                        key={name}
+                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                                    >
+                                                        <TableCell component="th" scope="row">
+                                                            { name }
+                                                        </TableCell>
+                                                        <TableCell align="right">{ base_stat }</TableCell>
+                                                    </TableRow>
+                                                ))}
+                                                </TableBody>
+                                            </Table>
+                                        </TableContainer>
+                                    </Item>
+                                </Grid>
+                                <Grid item xs={12} sm={6} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                    <img style={{ maxWidth: '30%' }} src='https://img2.freepng.es/20180630/kll/kisspng-radar-chart-radar-chart-clip-art-pentagono-5b37fb325ad6f3.1245669015303954423721.jpg' alt='graphic' />
+                                </Grid>
+                            </Grid>
+                        </>
                     :
                         <p>Error</p>
             
