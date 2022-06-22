@@ -45,3 +45,19 @@ html, body {
 #pokemon-img {
     width: 100%;
 }
+
+.pokemon-type {
+    border-radius: 50%;
+    box-shadow: 0px 0px 14px -2px #000000;
+    -webkit-box-shadow: 0px 0px 14px -2px #000000;
+    width: 100%;
+}
+
+.pokedex-title {
+    margin-bottom: 2em;
+    margin-top: 1em;
+}
+
+.pokedex-subtitle {
+    margin: 0.5em 0em 0em 1em;
+}

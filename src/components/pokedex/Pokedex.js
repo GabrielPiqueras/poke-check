@@ -13,6 +13,13 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 // Router
 import { useNavigate } from 'react-router-dom';
 
+// Autocomplete
+import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
+import InputAutocomplete from './InputAutocomplete';
+
+// Pokemons
+import { pokemons } from '../../data/pokemons';
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   height: '100%',
@@ -42,16 +49,21 @@ export const Pokedex = () => {
           <Grid container spacing={0}>
             <Grid item xs={12}>
               <Item>
-                  <form onSubmit={ handleSubmit }>
-                    <TextField
+                  <form onSubmit={ handleSubmit } style={{ display: 'flex'}}>
+
+                    {/* AUTOCOMPLETE */}
+                      <InputAutocomplete id="pokemon" reference={ inputName } labels={ pokemons }/>
+
+                    {/* FIN AUTOCOMPLETE */}
+                    {/* <TextField
                         id="pokemon"
                         ref={ inputName }
                         placeholder="pikachu"
                         type="search"
                         autoFocus
                         required
-                    />
-                    <Button id="search-btn" type="submit" variant="contained" startIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}>
+                    /> */}
+                    <Button id="search-btn" style={{ marginLeft: '1em'}} type="submit" variant="contained" startIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}>
                     </Button>
                   </form>
               </Item>

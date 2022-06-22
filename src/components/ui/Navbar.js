@@ -68,7 +68,8 @@ export const Navbar = () => {
         <AppBar id="navbar" position="static">
             <Container maxWidth="xl">
             <Toolbar disableGutters>
-                <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                
+                {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
                 <Typography
                     variant="h6"
                     noWrap
@@ -84,7 +85,7 @@ export const Navbar = () => {
                         textDecoration: 'none',
                 }}
                 >
-                LOGO
+                    <img src='/pokecheck_logo.svg' alt='pokecheck' style={{width: '7.5em', margin: '0em 1em 0em 0em'}} />
                 </Typography>
 
                 <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -126,7 +127,7 @@ export const Navbar = () => {
                         ))}
                     </Menu>
                 </Box>
-                <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
                 <Typography
                     variant="h5"
                     noWrap
@@ -143,7 +144,7 @@ export const Navbar = () => {
                         textDecoration: 'none',
                     }}
                 >
-                    LOGO
+                    <img src='/pokecheck_logo.svg' alt='pokecheck' style={{width: '7.5em', margin: '0.5em 2em 0em 2.5em'}} />
                 </Typography>
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                     {pages.map(({name, route}) => (
