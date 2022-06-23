@@ -83,8 +83,9 @@ export const PokemonInfo = () => {
                 ?
                     <>
                         <Grid id='pokemon-page' container spacing={0} sx={{ bgcolor: 'background.paper', color: 'color.paper' }}>
+                            
                             {/* Nombre y número */}
-                            <Grid container spacing={0} className='pokedex-title'>
+                            <Grid container spacing={0} className='pokedex-title animate__animated animate__fadeIn'>
                                 <Grid item xs={10}>
                                     <Item sx={{ color: 'color.paper' }}>
                                         <H3 id="pokemon-name" variant="h3">{ name }</H3>
@@ -101,9 +102,8 @@ export const PokemonInfo = () => {
                                 </Grid>
                             </Grid>
                             
-
                             {/* Datos principales y foto */}
-                            <Grid item xs={12} sm={8} md={9}>
+                            <Grid item xs={12} sm={8} md={9} className='animate__animated animate__fadeIn'>
                                 <H5 className="pokedex-subtitle" variant="h5"><b>Altura:</b> { height.toFixed(2) } m</H5>
                                 <H5 className="pokedex-subtitle" variant="h5"><b>Peso:</b> { weight.toFixed(2) } kg</H5>
                                 <H5 className="pokedex-subtitle" variant="h5">
@@ -117,7 +117,7 @@ export const PokemonInfo = () => {
                                     </ul>
                                     </H5>
                             </Grid>
-                            <Grid item xs={12} sm={4} md={3}>
+                            <Grid item xs={12} sm={4} md={3} className='animate__animated animate__fadeIn'>
                                 <Item sx={{ color: 'color.paper' }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                                     <img id='pokemon-img' src={sprites.other.dream_world.front_default || sprites.other.home.front_default} alt={name} />
 
@@ -132,7 +132,7 @@ export const PokemonInfo = () => {
                             </Grid>
 
                             {/* Titulo stats */}
-                            <Grid container spacing={0} className='pokedex-title'>
+                            <Grid container spacing={0} className='animate__animated animate__fadeIn'>
                                 <Grid item xs={12}>
                                     <Item sx={{ color: 'color.paper' }}>
                                         <H3 variant="h3">
@@ -148,7 +148,7 @@ export const PokemonInfo = () => {
                             </Grid>
 
                             {/* Tabla stats */}
-                            <Grid container spacing={0}>
+                            <Grid container spacing={0} className='animate__animated animate__fadeIn'>
                                 <Grid item xs={12} sm={6}>
                                     <Item>
                                         <TableContainer component={Paper} sx={{ width: '100%' }}>
