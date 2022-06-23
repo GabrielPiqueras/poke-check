@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // Icons
@@ -14,7 +14,6 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 // Autocomplete
-import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import InputAutocomplete from './InputAutocomplete';
 
 // Pokemons

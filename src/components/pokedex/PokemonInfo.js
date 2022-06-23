@@ -51,7 +51,7 @@ export const PokemonInfo = () => {
     const { data, loading, error } = useFetch(`https://pokeapi.co/api/v2/pokemon/${encodeURI(name)}/`);
 
     const {
-        id,
+        // id,
         order,
         height,
         weight,

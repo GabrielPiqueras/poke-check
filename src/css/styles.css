@@ -18,8 +18,11 @@ html, body {
 }
 
 #search-btn {
-    height: 50px;
+    height: 56px;
     width: 50px;
+    margin-left: 1em;
+    display: flex;
+    padding: 3px 0px 0px 10px;
 }
 
 /* Items Grid */
