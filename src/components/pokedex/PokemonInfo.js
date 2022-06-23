@@ -64,9 +64,13 @@ export const PokemonInfo = () => {
         sprites,
         types,
         stats,
-        moves,
         abilities
     } = !!data && data;
+
+    let { moves } = !!data && data;
+
+    moves = data && moves.filter(({move: { name }, version_group_details}) => version_group_details[0].level_learned_at !== 0)
+                         .sort((a,b) => a.version_group_details[0].level_learned_at - b.version_group_details[0].level_learned_at);
 
     return (
         <>
@@ -104,8 +108,8 @@ export const PokemonInfo = () => {
                             
                             {/* Datos principales y foto */}
                             <Grid item xs={12} sm={8} md={9} className='animate__animated animate__fadeIn'>
-                                <H5 className="pokedex-subtitle" variant="h5"><b>Altura:</b> { height.toFixed(2) } m</H5>
-                                <H5 className="pokedex-subtitle" variant="h5"><b>Peso:</b> { weight.toFixed(2) } kg</H5>
+                                <H5 className="pokedex-subtitle" variant="h5"><b>Altura:</b> { (height/10).toFixed(2) } m</H5>
+                                <H5 className="pokedex-subtitle" variant="h5"><b>Peso:</b> { (weight/10).toFixed(2) } kg</H5>
                                 <H5 className="pokedex-subtitle" variant="h5">
                                     <b>Habilidades:</b>
                                     <ul>
@@ -132,7 +136,7 @@ export const PokemonInfo = () => {
                             </Grid>
 
                             {/* Titulo stats */}
-                            <Grid container spacing={0} className='animate__animated animate__fadeIn'>
+                            <Grid container spacing={0} className='animate__animated animate__fadeIn pokedex-title'>
                                 <Grid item xs={12}>
                                     <Item sx={{ color: 'color.paper' }}>
                                         <H3 variant="h3">
@@ -209,17 +213,20 @@ export const PokemonInfo = () => {
                                                     </TableRow>
                                                 </TableHead>
                                                 <TableBody>
-                                                {moves.map(({move: { name }, version_group_details}) => (
-                                                    <TableRow
-                                                        key={name}
-                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                                    >
-                                                        <TableCell align="center" component="td" scope="row" sx={{ color: 'color.paper' }}>
-                                                            { name }
-                                                        </TableCell>
-                                                        <TableCell align="center" component="td" sx={{ color: 'color.paper' }}>{ version_group_details[0].level_learned_at }</TableCell>
-                                                    </TableRow>
-                                                ))}
+                                                { moves.map(({move: { name }, version_group_details}) => 
+                                                    {
+                                                        return (
+                                                            <TableRow key={name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                                                <TableCell align="center" component="td" scope="row" sx={{ color: 'color.paper' }}>
+                                                                    { name }
+                                                                </TableCell>
+                                                                <TableCell align="center" component="td" sx={{ color: 'color.paper' }}>
+                                                                    { version_group_details[0].level_learned_at }
+                                                                </TableCell>
+                                                            </TableRow>
+                                                        )
+                                                    }
+                                                )}
                                                 </TableBody>
                                             </Table>
                                         </TableContainer>

@@ -1,19 +1,16 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
-// import Dialog from '@mui/material/Dialog';
-// import DialogTitle from '@mui/material/DialogTitle';
-// import DialogContent from '@mui/material/DialogContent';
-// import DialogContentText from '@mui/material/DialogContentText';
-// import DialogActions from '@mui/material/DialogActions';
-// import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogActions from '@mui/material/DialogActions';
+import Button from '@mui/material/Button';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 
 const filter = createFilterOptions();
 
-export default function InputAutocomplete({ id, reference, labels }) {
-
-  console.log('id', id);
-  console.log('reference', reference);
+export default function InputAutocomplete({ id, labels, text_label = '', showDialog = false, dialogTitle = '', dialogText = ''}) {
 
   const [value, setValue] = React.useState(null);
   const [open, toggleOpen] = React.useState(false);
@@ -91,52 +88,55 @@ export default function InputAutocomplete({ id, reference, labels }) {
         renderOption={(props, option) => <li {...props}>{option.title}</li>}
         sx={{ width: 300 }}
         freeSolo
-        renderInput={(params) => <TextField {...params} label="" placeholder='Pikachu' autoFocus />}
+        renderInput={(params) => <TextField {...params} label={ text_label } placeholder='Pikachu' autoFocus />}
       />
-      {/* <Dialog open={open} onClose={handleClose}>
-        <form onSubmit={handleSubmit}>
-          <DialogTitle>Add a new film</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Did you miss any film in our list? Please, add it!
-            </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id={ id }
-              ref={reference}
-              value={dialogValue.title}
-              onChange={(event) =>
-                setDialogValue({
-                  ...dialogValue,
-                  title: event.target.value,
-                })
-              }
-              label="title"
-              type="text"
-              variant="standard"
-            />
-            <TextField
-              margin="dense"
-              id="name"
-              value={dialogValue.year}
-              onChange={(event) =>
-                setDialogValue({
-                  ...dialogValue,
-                  year: event.target.value,
-                })
-              }
-              label="year"
-              type="number"
-              variant="standard"
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button type="submit">Add</Button>
-          </DialogActions>
-        </form>
-      </Dialog> */}
+      {
+        (showDialog)
+        &&
+        <Dialog open={open} onClose={handleClose}>
+          <form onSubmit={handleSubmit}>
+            <DialogTitle>{ dialogTitle }</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                { dialogText }
+              </DialogContentText>
+              <TextField
+                autoFocus
+                margin="dense"
+                id={ id }
+                value={dialogValue.title}
+                onChange={(event) =>
+                  setDialogValue({
+                    ...dialogValue,
+                    title: event.target.value,
+                  })
+                }
+                label="title"
+                type="text"
+                variant="standard"
+              />
+              <TextField
+                margin="dense"
+                id="name"
+                value={dialogValue.year}
+                onChange={(event) =>
+                  setDialogValue({
+                    ...dialogValue,
+                    year: event.target.value,
+                  })
+                }
+                label="year"
+                type="number"
+                variant="standard"
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>Cancel</Button>
+              <Button type="submit">Add</Button>
+            </DialogActions>
+          </form>
+        </Dialog>
+      }
     </React.Fragment>
   );
 }

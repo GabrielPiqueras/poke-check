@@ -49,19 +49,11 @@ export const Pokedex = () => {
             <Grid item xs={12}>
               <Item>
                   <form onSubmit={ handleSubmit } style={{ display: 'flex'}}>
-
-                    {/* AUTOCOMPLETE */}
-                      <InputAutocomplete id="pokemon" reference={ inputName } labels={ pokemons }/>
-
-                    {/* FIN AUTOCOMPLETE */}
-                    {/* <TextField
+                    <InputAutocomplete
                         id="pokemon"
-                        ref={ inputName }
-                        placeholder="pikachu"
-                        type="search"
-                        autoFocus
-                        required
-                    /> */}
+                        labels={ pokemons }
+                        showDialog={ false }
+                      />
                     <Button id="search-btn" style={{ marginLeft: '1em'}} type="submit" variant="contained" startIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}>
                     </Button>
                   </form>
