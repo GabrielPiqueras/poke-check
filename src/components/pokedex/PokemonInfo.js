@@ -69,19 +69,20 @@ export const PokemonInfo = () => {
     } = !!data && data;
 
     return (
-        <Grid id='pokemon-page' container spacing={0} sx={{ bgcolor: 'background.paper', color: 'color.paper' }}>
-            {
-                (loading)
-                ?
-                    <Box id='box-pokemon-info' sx={{ display: 'flex', alignItems: 'stretch', height: '100%', width: '100%'}}>
-                        <Box id='loading-box' sx={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-                            <CircularProgress disableShrink size={ 120 } />
-                        </Box>
+        <>
+        {
+            (loading)
+            ?
+                <Box id='box-pokemon-info' sx={{  bgcolor: 'background.paper', color: 'color.paper', display: 'flex', alignItems: 'stretch', height: '100%', width: '100%'}}>
+                    <Box id='loading-box' sx={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                        <CircularProgress disableShrink size={ 120 } />
                     </Box>
-                :
-                    (!error && data)
-                    ?
-                        <>
+                </Box>
+            :
+            (!error && data)
+                ?
+                    <>
+                        <Grid id='pokemon-page' container spacing={0} sx={{ bgcolor: 'background.paper', color: 'color.paper' }}>
                             {/* Nombre y número */}
                             <Grid container spacing={0} className='pokedex-title'>
                                 <Grid item xs={10}>
@@ -175,7 +176,7 @@ export const PokemonInfo = () => {
                                     </Item>
                                 </Grid>
                                 <Grid item xs={12} sm={6} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                                    <img style={{ maxWidth: '30%' }} src='https://img2.freepng.es/20180630/kll/kisspng-radar-chart-radar-chart-clip-art-pentagono-5b37fb325ad6f3.1245669015303954423721.jpg' alt='graphic' />
+                                    <img style={{ maxWidth: '49%' }} src='https://i.imgur.com/pyIxEyo.png' alt='graphic' />
                                 </Grid>
                             </Grid>
 
@@ -224,17 +225,12 @@ export const PokemonInfo = () => {
                                         </TableContainer>
                                     </Item>
                                 </Grid>
-                                <Grid item xs={12} sm={6} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                                    <img style={{ maxWidth: '30%' }} src='https://img2.freepng.es/20180630/kll/kisspng-radar-chart-radar-chart-clip-art-pentagono-5b37fb325ad6f3.1245669015303954423721.jpg' alt='graphic' />
-                                </Grid>
                             </Grid>
-                        </>
-                    :
-                        <p>Error</p>
-            
-            }
-            
-        </Grid>
-         
+                        </Grid>
+                    </>
+                :
+                    <p>Error</p>
+        }
+        </>
     )
 }

@@ -29,10 +29,10 @@ const pages = [
     { name: 'Otro', route: '/otro' },
 ];
 const settings = [
-    { name: 'Profile', route: '/' },
-    { name: 'Account', route: '/pokedex' },
+    { name: 'Perfil', route: '/' },
+    { name: 'Cuenta', route: '/pokedex' },
     { name: 'Dashboard', route: '/' },
-    { name: 'Logout', route: '/' }
+    { name: 'Salir', route: '/' }
 ];
 
 export const Navbar = () => {
