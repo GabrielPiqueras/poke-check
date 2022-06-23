@@ -21,6 +21,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
+// font awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faShieldHalved } from '@fortawesome/free-solid-svg-icons';
+import { faWind } from '@fortawesome/free-solid-svg-icons';
+
 // THEME WITH typography
 
   const Item = styled(Paper)(({ theme }) => ({
@@ -62,19 +68,12 @@ export const PokemonInfo = () => {
         abilities
     } = !!data && data;
 
-    if (!!data && data ) {
-        const { type : { name } } = types[0];
-
-
-        console.log(name);
-    }
-
     return (
         <Grid id='pokemon-page' container spacing={0} sx={{ bgcolor: 'background.paper', color: 'color.paper' }}>
             {
                 (loading)
                 ?
-                    <Box id='box-pokemon-info' sx={{ display: 'flex', alignItems: 'stretch', height: '100%' }}>
+                    <Box id='box-pokemon-info' sx={{ display: 'flex', alignItems: 'stretch', height: '100%', width: '100%'}}>
                         <Box id='loading-box' sx={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
                             <CircularProgress disableShrink size={ 120 } />
                         </Box>
@@ -135,7 +134,10 @@ export const PokemonInfo = () => {
                             <Grid container spacing={0} className='pokedex-title'>
                                 <Grid item xs={12}>
                                     <Item sx={{ color: 'color.paper' }}>
-                                        <H3 variant="h3">Stats</H3>
+                                        <H3 variant="h3">
+                                        <FontAwesomeIcon icon={ faShieldHalved } />
+                                        &nbsp; Stats
+                                        </H3>
                                     </Item>
                                 </Grid>
 
@@ -181,7 +183,10 @@ export const PokemonInfo = () => {
                             <Grid container spacing={0} className='pokedex-title'>
                                 <Grid item xs={12}>
                                     <Item sx={{ color: 'color.paper' }}>
-                                        <H3 id="pokemon-name" variant="h3">Movimientos</H3>
+                                        <H3 id="pokemon-name" variant="h3">
+                                            <FontAwesomeIcon icon={ faWind } />
+                                            &nbsp; Movimientos
+                                        </H3>
                                     </Item>
                                 </Grid>
                                 

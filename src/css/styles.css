@@ -34,6 +34,7 @@ html, body {
 /* Pokemon info */
 
 #pokemon-page {
+    height: 100% auto;
     padding: 0% 10% 0% 10%;
 }
 
