@@ -121,7 +121,7 @@ export const PokemonInfo = () => {
                             </Grid>
                             
                             {/* Datos principales */}
-                            <Grid item xs={12} sm={8} md={8} lg={8} className='animate__animated animate__fadeIn'>
+                            <Grid item xs={12} sm={9} md={9} lg={9} className='animate__animated animate__fadeIn'>
                                 <H5 className="pokedex-subtitle" variant="h5"><b>Altura:</b> { (height/10).toFixed(2) } m</H5>
                                 <H5 className="pokedex-subtitle" variant="h5"><b>Peso:</b> { (weight/10).toFixed(2) } kg</H5>
                                 <H5 className="pokedex-subtitle" variant="h5">
@@ -139,9 +139,8 @@ export const PokemonInfo = () => {
                                 <EfficienciesList title='Resistencias' effs={ strengths } />
                                 <EfficienciesList title='Inmunidades' effs={ immunities } />
                             </Grid>
-
                             {/* Foto y tipos */}
-                            <Grid item xs={12} sm={4} md={4} lg={4} className='animate__animated animate__fadeIn'>
+                            <Grid item xs={12} sm={3} md={3} lg={3} className='animate__animated animate__fadeIn'>
                                 <Item sx={{ color: 'color.paper' }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                                     <img id='pokemon-img' src={sprites.other.dream_world.front_default || sprites.other.home.front_default} alt={name} />
 
