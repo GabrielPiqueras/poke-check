@@ -23,9 +23,29 @@ import TableRow from '@mui/material/TableRow';
 
 // font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { faShieldHalved } from '@fortawesome/free-solid-svg-icons';
 import { faWind } from '@fortawesome/free-solid-svg-icons';
+import { getEfficienciesByType } from '../../helpers/getEfficienciesByType';
+
+// Button
+import Button from '@mui/material/Button';
+import { EfficienciesList } from './EfficienciesList';
+
+// Types resistences
+// import { typesResistences } from '../../data/typesResistences';
+
+// const type = typesResistences.find(type => type.name === 'ice');
+// // const resistences = type.resistences.filter(resistence => {
+// //     return resistences.type && (resistence.value !== 1)
+// // });
+
+// const resistences = type.resistences.map((resistence) => {
+//     if(resistence.value !== 1) return resistence.type;
+// });
+
+// // ESTO ES FUMADISIMO, SEGUIR MAÑANA
+//                                     // .filter(resistences => resistences.value === 0.5);
+// console.log('resistences', resistences);
 
 // THEME WITH typography
 
@@ -62,15 +82,26 @@ export const PokemonInfo = () => {
         height,
         weight,
         sprites,
-        types,
         stats,
         abilities
     } = !!data && data;
 
-    let { moves } = !!data && data;
+    let { types, moves } = !!data && data;
 
-    moves = data && moves.filter(({move: { name }, version_group_details}) => version_group_details[0].level_learned_at !== 0)
-                         .sort((a,b) => a.version_group_details[0].level_learned_at - b.version_group_details[0].level_learned_at);
+    let weaknesses, strengths, immunities;
+    
+    if ( data ) {
+        const type1 = types[0].type.name;
+        const type2 = types[1]?.type.name;
+        const efficiencies = getEfficienciesByType(type1, type2);
+
+        weaknesses = efficiencies.weaknesses;
+        strengths = efficiencies.strengths;
+        immunities = efficiencies.immunities;
+
+        moves = data && moves.filter(({move: { name }, version_group_details}) => version_group_details[0].level_learned_at !== 0)
+                             .sort((a,b) => a.version_group_details[0].level_learned_at - b.version_group_details[0].level_learned_at);
+    }
 
     return (
         <>
@@ -119,7 +150,11 @@ export const PokemonInfo = () => {
                                             })
                                         }
                                     </ul>
-                                    </H5>
+                                </H5>
+     
+                                <EfficienciesList title='Debilidades' effs={ weaknesses } />
+                                <EfficienciesList title='Resistencias' effs={ strengths } />
+                                <EfficienciesList title='Inmunidades' effs={ immunities } />
                             </Grid>
                             <Grid item xs={12} sm={4} md={3} className='animate__animated animate__fadeIn'>
                                 <Item sx={{ color: 'color.paper' }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>

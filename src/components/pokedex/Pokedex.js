@@ -18,6 +18,8 @@ import InputAutocomplete from './InputAutocomplete';
 
 // Pokemons
 import { pokemons } from '../../data/pokemons';
+import { getEfficienciesByType } from '../../helpers/getEfficienciesByType';
+import { testFunction } from '../../helpers/testFunction';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
