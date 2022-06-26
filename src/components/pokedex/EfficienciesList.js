@@ -6,6 +6,9 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 
+// Tooltip
+import Tooltip from '@mui/material/Tooltip';
+
 const H5 = styled(Paper)(({ theme }) => ({
     fontSize: '1.2rem',
     fontFamily: 'Roboto, Helvetica, Arial, sans-serif'
@@ -28,10 +31,12 @@ export const EfficienciesList = ({ title, effs}) => {
                             {
                                 effs.map(({type, value}) => {
                                     return (
-                                        <Button xs={3} key={type} className={`efficiency ${type}`} variant="contained">
-                                            <img src={`/assets/types/${type}.svg`} alt={type} />
-                                            <span>{ type }</span>
-                                        </Button>
+                                        <Tooltip title={`x${value}`} placement="top">
+                                            <Button xs={3} key={type} className={`efficiency ${type}`} variant="contained">
+                                                <img src={`/assets/types/${type}.svg`} alt={type} />
+                                                <span>{ type }</span>
+                                            </Button>
+                                        </Tooltip>
                                     )
                                 })
                             }

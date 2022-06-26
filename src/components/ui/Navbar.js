@@ -12,6 +12,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+
+// AuthContext
+import { AuthContext } from '../../auth/AuthContext';
+
 // import AdbIcon from '@mui/icons-material/Adb';
 
 //Router
@@ -24,18 +28,25 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 // Importo contexto 
 import { ThemeContext } from '../../context/ThemeContext';
 
+// Types context
+import { types } from '../../types/types';
+
 const pages = [
-    { name: 'Pokedex', route: '/pokedex' },
-    { name: 'Otro', route: '/otro' },
+    { name: 'Pokedex', route: '/pokedex', isPrivate: 0 },
+    { name: 'Objetos', route: '/items', isPrivate: 1 },
+    { name: 'Comparar', route: '/compare', isPrivate: 1 },
 ];
 const settings = [
-    { name: 'Perfil', route: '/' },
-    { name: 'Cuenta', route: '/pokedex' },
-    { name: 'Dashboard', route: '/' },
-    { name: 'Salir', route: '/' }
+    { name: 'Perfil', route: '/profile' },
+    { name: 'Cuenta', route: '/account' },
+    { name: 'Dashboard', route: '/dashboard' },
+    // { name: 'Salir', route: '/logout' }
 ];
 
 export const Navbar = () => {
+
+    const authContext = useContext(AuthContext);
+    const { user: { name, logged }, dispatch } = authContext;
 
     const navigate = useNavigate();
 
@@ -43,6 +54,13 @@ export const Navbar = () => {
 
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
+
+    const handleLogout = () => {
+        dispatch({type: types.logout});
+
+        localStorage.removeItem('user');
+        navigate('/login', { replace: true });
+    }
 
     const changeTheme = () => {
         setIsDarkTheme(!isDarkTheme);
@@ -117,13 +135,15 @@ export const Navbar = () => {
                             display: { xs: 'block', md: 'none' },
                         }}
                     >
-                        {pages.map(({name, route}) => (
-                            <MenuItem key={name} onClick={ () => {
+                        {pages.map(({name, route, isPrivate}) => (
+                            (!isPrivate)
+                            &&
+                            (<MenuItem key={name} onClick={ () => {
                                 handleCloseNavMenu();
                                 navigate(route);
                             }}>
                                 <Typography textAlign="center">{name}</Typography>
-                            </MenuItem>
+                            </MenuItem>)
                         ))}
                     </Menu>
                 </Box>
@@ -147,7 +167,9 @@ export const Navbar = () => {
                     <img src='/pokecheck_logo.svg' alt='pokecheck' style={{width: '7.5em', margin: '0.5em 2em 0em 2.5em'}} />
                 </Typography>
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                    {pages.map(({name, route}) => (
+                    {pages.map(({name, route, isPrivate}) => (
+                        (!isPrivate)
+                        &&
                         <Button
                             key={name}
                             onClick={() => navigate(route)}
@@ -162,40 +184,58 @@ export const Navbar = () => {
                 <IconButton sx={{ ml: 1 }} onClick={ changeTheme } color="inherit">
                     { isDarkTheme ? <Brightness4Icon /> : <Brightness7Icon /> }
                 </IconButton>
-
-                <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open settings">
-                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                    </IconButton>
-                </Tooltip>
-                <Menu
-                    sx={{ mt: '45px' }}
-                    id="menu-appbar"
-                    anchorEl={anchorElUser}
-                    anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                    }}
-                    open={Boolean(anchorElUser)}
-                    onClose={handleCloseUserMenu}
-                >
-                    {settings.map(({name, route}) => (
-                        <MenuItem key={name} onClick={ () => {
-                                handleCloseUserMenu();
-                                navigate(route);
-                            }
-                        }>
-                            <Typography textAlign="center">{name}</Typography>
-                        </MenuItem>
-                    ))}
-                </Menu>
-                </Box>
+                {
+                    (logged)
+                    ?
+                        
+                        (<Box sx={{ flexGrow: 0 }}>
+                            <Tooltip title="Menú de usuario">
+                                {/* <span>{ name }</span> */}
+                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                </IconButton>
+                            </Tooltip>
+                            <Menu
+                                sx={{ mt: '45px' }}
+                                id="menu-appbar"
+                                anchorEl={anchorElUser}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={Boolean(anchorElUser)}
+                                onClose={handleCloseUserMenu}
+                            >
+                                {
+                                    settings.map(({name, route}) => (
+                                        <MenuItem key={name} onClick={ () => {
+                                                handleCloseUserMenu();
+                                                navigate(route);
+                                            }
+                                        }>
+                                            <Typography textAlign="center">{name}</Typography>
+                                        </MenuItem>
+                                    ))
+                                }
+                                {/* Cerrar sesión */}
+                                <MenuItem key='logout' onClick={ handleLogout }>
+                                    <Typography textAlign="center">Salir</Typography>
+                                </MenuItem>
+                            </Menu>
+                        </Box>)
+                    :
+                        (<Button 
+                            onClick={() => navigate('/login')}
+                            sx={{ my: 2, color: 'white', display: 'block' }}
+                        >
+                            Iniciar sesión
+                        </Button>)
+                }
             </Toolbar>
             </Container>
         </AppBar>

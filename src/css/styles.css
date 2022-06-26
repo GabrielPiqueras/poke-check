@@ -72,6 +72,10 @@ html, body {
     /* justify-content: flex-start; */
 }
 
+.MuiTooltip-tooltip {
+    font-size: 18px!important;
+}
+
 .efficiency {
     align-self: center;
     color: white!important;

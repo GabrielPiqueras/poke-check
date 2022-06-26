@@ -31,6 +31,7 @@ import { getEfficienciesByType } from '../../helpers/getEfficienciesByType';
 import Button from '@mui/material/Button';
 import { EfficienciesList } from './EfficienciesList';
 
+
 // Types resistences
 // import { typesResistences } from '../../data/typesResistences';
 
