@@ -54,8 +54,6 @@ export const Navbar = () => {
 
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-
-    console.log('anchorElUser: ', anchorElUser);
     
     const handleLogout = () => {
         setAnchorElUser(null);
