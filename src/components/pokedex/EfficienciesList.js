@@ -31,8 +31,8 @@ export const EfficienciesList = ({ title, effs}) => {
                             {
                                 effs.map(({type, value}) => {
                                     return (
-                                        <Tooltip title={`x${value}`} placement="top">
-                                            <Button xs={3} key={type} className={`efficiency ${type}`} variant="contained">
+                                        <Tooltip key={`tooltipe-${type}`} title={`x${value}`} placement="top">
+                                            <Button key={`eff-${type}`} xs={3} className={`efficiency ${type}`} variant="contained">
                                                 <img src={`/assets/types/${type}.svg`} alt={type} />
                                                 <span>{ type }</span>
                                             </Button>

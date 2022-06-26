@@ -32,9 +32,9 @@ import { ThemeContext } from '../../context/ThemeContext';
 import { types } from '../../types/types';
 
 const pages = [
-    { name: 'Pokedex', route: '/pokedex', isPrivate: 0 },
-    { name: 'Objetos', route: '/items', isPrivate: 1 },
-    { name: 'Comparar', route: '/compare', isPrivate: 1 },
+    { name: 'Pokedex', route: '/pokedex' },
+    { name: 'Objetos', route: '/items' },
+    { name: 'Comparar', route: '/compare' }
 ];
 const settings = [
     { name: 'Perfil', route: '/profile' },
@@ -55,11 +55,14 @@ export const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
+    console.log('anchorElUser: ', anchorElUser);
+    
     const handleLogout = () => {
+        setAnchorElUser(null);
         dispatch({type: types.logout});
 
         localStorage.removeItem('user');
-        navigate('/login', { replace: true });
+        navigate('/login');
     }
 
     const changeTheme = () => {
@@ -70,6 +73,7 @@ export const Navbar = () => {
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
+
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
@@ -106,47 +110,55 @@ export const Navbar = () => {
                     <img src='/pokecheck_logo.svg' alt='pokecheck' style={{width: '7.5em', margin: '0em 1em 0em 0em'}} />
                 </Typography>
 
-                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                    <IconButton
-                        size="large"
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={handleOpenNavMenu}
-                        color="inherit"
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorElNav}
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
-                        }}
-                        open={Boolean(anchorElNav)}
-                        onClose={handleCloseNavMenu}
-                        sx={{
-                            display: { xs: 'block', md: 'none' },
-                        }}
-                    >
-                        {pages.map(({name, route, isPrivate}) => (
-                            (!isPrivate)
-                            &&
-                            (<MenuItem key={name} onClick={ () => {
-                                handleCloseNavMenu();
-                                navigate(route);
-                            }}>
-                                <Typography textAlign="center">{name}</Typography>
-                            </MenuItem>)
-                        ))}
-                    </Menu>
-                </Box>
+                {/* Menú para móviles */}
+                {
+                    (logged)
+                    &&
+                    (<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                        <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleOpenNavMenu}
+                            color="inherit"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorElNav}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={Boolean(anchorElNav)}
+                            onClose={handleCloseNavMenu}
+                            sx={{
+                                display: { xs: 'block', md: 'none' },
+                            }}
+                        >
+                            {
+                                (logged)
+                                &&
+                                pages.map(({name, route}) => (
+                                    <MenuItem key={name} onClick={ () => {
+                                        handleCloseNavMenu();
+                                        navigate(route);
+                                    }}>
+                                        <Typography textAlign="center">{name}</Typography>
+                                    </MenuItem>
+                                ))
+                            }
+                        </Menu>
+                    </Box>)
+                }
+
                 {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
                 <Typography
                     variant="h5"
@@ -167,17 +179,19 @@ export const Navbar = () => {
                     <img src='/pokecheck_logo.svg' alt='pokecheck' style={{width: '7.5em', margin: '0.5em 2em 0em 2.5em'}} />
                 </Typography>
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                    {pages.map(({name, route, isPrivate}) => (
-                        (!isPrivate)
+                    {
+                        (logged)
                         &&
-                        <Button
-                            key={name}
-                            onClick={() => navigate(route)}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
-                        >
-                        {name}
-                        </Button>
-                    ))}
+                        pages.map(({name, route}) => (
+                            <Button
+                                key={name}
+                                onClick={() => navigate(route)}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                {name}
+                            </Button>
+                        ))
+                    }
                 </Box>
                 
                 {/* Icono para cambiar de tema */}
@@ -187,10 +201,9 @@ export const Navbar = () => {
                 {
                     (logged)
                     ?
-                        
                         (<Box sx={{ flexGrow: 0 }}>
-                            <Tooltip title="Menú de usuario">
-                                {/* <span>{ name }</span> */}
+                            
+                            <Tooltip title="Menu de usuario">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                                 </IconButton>
@@ -233,7 +246,7 @@ export const Navbar = () => {
                             onClick={() => navigate('/login')}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
-                            Iniciar sesión
+                            Entrar
                         </Button>)
                 }
             </Toolbar>

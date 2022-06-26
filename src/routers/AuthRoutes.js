@@ -1,10 +1,10 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Items } from '../components/items/Items';
 import { Compare } from '../components/compare/Compare';
 import { Account } from '../components/dashboard/Account';
 import { Profile } from '../components/dashboard/Profile';
-import { Logout } from '../components/auth/Logout';
+import { Logout } from '../components/login/Logout';
 
 export const AuthRoutes = () => {
     return (

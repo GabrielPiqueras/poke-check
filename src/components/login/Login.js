@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext, useRef } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -40,20 +40,16 @@ const theme = createTheme();
 export const Login = () => {
 
   const navigate = useNavigate();
-  const inputUsername = useRef();
-  const inputPassword = useRef();
-  
+
   const authContext = useContext(AuthContext); 
   const { user, dispatch } = authContext;
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const username = inputUsername.current.value;
-    const password = inputPassword.current.value;
+    const username = document.querySelector('#username').value;
+    const password = document.querySelector('#password').value;
     
-    console.log(inputUsername.current.value)
-
     dispatch({
       type: types.login,
       payload: username
@@ -105,9 +101,8 @@ export const Login = () => {
             <Typography component="h1" variant="h5">
               Iniciar Sesión
             </Typography>
-            <Box component="form" noValidate onSubmit={handleLogin} sx={{ mt: 1 }}>
-              <TextField
-                ref={ inputUsername }
+            <Box component="form" noValidate onSubmit={ handleLogin } sx={{ mt: 1 }}>
+              {/* <TextField
                 margin="normal"
                 required
                 fullWidth
@@ -116,9 +111,18 @@ export const Login = () => {
                 name="email"
                 autoComplete="email"
                 autoFocus
+              /> */}
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="username"
+                label="Usuario"
+                name="username"
+                autoComplete="username"
+                autoFocus
               />
               <TextField
-                ref={ inputPassword }
                 margin="normal"
                 required
                 fullWidth

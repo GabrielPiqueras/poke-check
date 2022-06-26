@@ -31,26 +31,7 @@ import { getEfficienciesByType } from '../../helpers/getEfficienciesByType';
 import Button from '@mui/material/Button';
 import { EfficienciesList } from './EfficienciesList';
 
-
-// Types resistences
-// import { typesResistences } from '../../data/typesResistences';
-
-// const type = typesResistences.find(type => type.name === 'ice');
-// // const resistences = type.resistences.filter(resistence => {
-// //     return resistences.type && (resistence.value !== 1)
-// // });
-
-// const resistences = type.resistences.map((resistence) => {
-//     if(resistence.value !== 1) return resistence.type;
-// });
-
-// // ESTO ES FUMADISIMO, SEGUIR MAÑANA
-//                                     // .filter(resistences => resistences.value === 0.5);
-// console.log('resistences', resistences);
-
-// THEME WITH typography
-
-  const Item = styled(Paper)(({ theme }) => ({
+const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.color.paper,
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -73,7 +54,6 @@ const H5 = styled(Paper)(({ theme }) => ({
 
 export const PokemonInfo = () => {
 
-    // Obtengo el nombre
     const { name } = useParams();
     const { data, loading, error } = useFetch(`https://pokeapi.co/api/v2/pokemon/${encodeURI(name)}/`);
 
@@ -92,6 +72,7 @@ export const PokemonInfo = () => {
     let weaknesses, strengths, immunities;
     
     if ( data ) {
+        // Obtener eficiencias
         const type1 = types[0].type.name;
         const type2 = types[1]?.type.name;
         const efficiencies = getEfficienciesByType(type1, type2);
@@ -100,6 +81,7 @@ export const PokemonInfo = () => {
         strengths = efficiencies.strengths;
         immunities = efficiencies.immunities;
 
+        // Filtrar y ordenar movimientos por nivel
         moves = data && moves.filter(({move: { name }, version_group_details}) => version_group_details[0].level_learned_at !== 0)
                              .sort((a,b) => a.version_group_details[0].level_learned_at - b.version_group_details[0].level_learned_at);
     }
@@ -138,8 +120,8 @@ export const PokemonInfo = () => {
                                 </Grid>
                             </Grid>
                             
-                            {/* Datos principales y foto */}
-                            <Grid item xs={12} sm={8} md={9} className='animate__animated animate__fadeIn'>
+                            {/* Datos principales */}
+                            <Grid item xs={12} sm={8} md={9} lg={9} className='animate__animated animate__fadeIn'>
                                 <H5 className="pokedex-subtitle" variant="h5"><b>Altura:</b> { (height/10).toFixed(2) } m</H5>
                                 <H5 className="pokedex-subtitle" variant="h5"><b>Peso:</b> { (weight/10).toFixed(2) } kg</H5>
                                 <H5 className="pokedex-subtitle" variant="h5">
@@ -157,7 +139,9 @@ export const PokemonInfo = () => {
                                 <EfficienciesList title='Resistencias' effs={ strengths } />
                                 <EfficienciesList title='Inmunidades' effs={ immunities } />
                             </Grid>
-                            <Grid item xs={12} sm={4} md={3} className='animate__animated animate__fadeIn'>
+
+                            {/* Foto y tipos */}
+                            <Grid item xs={12} sm={4} md={3} lg={3} className='animate__animated animate__fadeIn'>
                                 <Item sx={{ color: 'color.paper' }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                                     <img id='pokemon-img' src={sprites.other.dream_world.front_default || sprites.other.home.front_default} alt={name} />
 
@@ -166,6 +150,7 @@ export const PokemonInfo = () => {
                                             types.map(({type: { name }}) => {
                                                 return <img key={name} style={{maxWidth: '15%', margin: '5% 3%'}} className='pokemon-type' src={`/assets/types/${name}.svg`} alt={name} />
                                             })
+                                            // ESTILO EN EM: style={{maxWidth: '3em', margin: '1em 0.5em'}}
                                         }
                                     </div>
                                 </Item>

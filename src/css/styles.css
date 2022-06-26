@@ -69,6 +69,7 @@ html, body {
 .efficiencies {
     display: flex;
     margin: 0em 1em;
+    /* margin: 0em 0em 2em 1em; */
     /* justify-content: flex-start; */
 }
 
