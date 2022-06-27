@@ -150,7 +150,7 @@ export const PokemonInfo = () => {
                                 <Item sx={{ color: 'color.paper' }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                                     <img id='pokemon-img' src={sprites.other.dream_world.front_default || sprites.other.home.front_default} alt={name} />
 
-                                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                    <div id={`types-count-${types.length}`} style={{ display: 'flex', justifyContent: 'center' }}>
                                         {
                                             types.map(({type: { name }}) => {
                                                 return <img key={name} className='pokemon-type' src={`/assets/types/${name}.svg`} alt={name} />
