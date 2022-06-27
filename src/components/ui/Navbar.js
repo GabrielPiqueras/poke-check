@@ -33,8 +33,8 @@ import { types } from '../../types/types';
 
 const pages = [
     { name: 'Pokedex', route: '/pokedex' },
-    { name: 'Objetos', route: '/items' },
-    { name: 'Comparar', route: '/compare' }
+    // { name: 'Objetos', route: '/items' },
+    // { name: 'Comparar', route: '/compare' }
 ];
 const settings = [
     { name: 'Perfil', route: '/profile' },
