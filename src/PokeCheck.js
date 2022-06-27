@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { dark, light } from './data/themes';
 
 // CSS
-import './css/styles.css';
+import './css/styles.min.css';
 
 const PokeCheck = () => {
 

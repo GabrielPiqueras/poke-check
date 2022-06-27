@@ -27,7 +27,7 @@ export const EfficienciesList = ({ title, effs}) => {
                         <b>{ title }:</b>
                     </H5>
                     <div className='efficiencies'>
-                        <Grid xs={12} sm={8} md={8} lg={6} container spacing={0} className='pokedex-title animate__animated animate__fadeIn'>
+                        <Grid xs={12} sm={7} md={7} lg={6} xl={5} container spacing={0} className='pokedex-title animate__animated animate__fadeIn'>
                             {
                                 effs.map(({type, value}) => {
                                     return (

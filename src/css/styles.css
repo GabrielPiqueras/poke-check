@@ -55,6 +55,8 @@ html, body {
     box-shadow: 0px 0px 14px -2px #000000;
     -webkit-box-shadow: 0px 0px 14px -2px #000000;
     width: 100%;
+    max-width: 15%;
+    margin: 5% 3%;
 }
 
 .pokedex-title {
@@ -133,3 +135,11 @@ html, body {
 .efficiency.steel:hover { background-color:#5a8ea2; }
 .efficiency.water { background-color:#3692dc; }
 .efficiency.water:hover { background-color:#3692dc; }
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width: 1536px) {
+    .pokemon-type {
+        max-width: 13%;
+    }
+  }
