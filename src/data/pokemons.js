@@ -3,7 +3,7 @@ export const pokemons = [
     { title: 'Abra' },
     { title: 'Absol' },
     { title: 'Accelgor' },
-    { title: 'Aegislash' },
+    { title: 'Aegislash-shield' },
     { title: 'Aerodactyl' },
     { title: 'Aggron' },
     { title: 'Aipom' },

@@ -77,12 +77,13 @@ export const Login = () => {
           sm={4}
           md={8}
           sx={{
-            backgroundImage: 'url(https://c.wallhere.com/photos/93/38/2321x1645_px_Afternoon_day_Grovyle_pokemon_scenery-1708267.jpg!d)',
+            backgroundImage: `url(${process.env.PUBLIC_URL}/assets/login_bg.jpg)`,
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            title: 'Bienvenido',
           }}
         />
         <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square>

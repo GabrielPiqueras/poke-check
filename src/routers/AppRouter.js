@@ -16,7 +16,7 @@ export const AppRouter = () => {
     const { user: { logged }} = authContext;
 
     return (
-        <Router>
+        <Router basename='/pokecheck'>
             <Navbar />
 
             <Routes>

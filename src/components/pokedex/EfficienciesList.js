@@ -33,7 +33,7 @@ export const EfficienciesList = ({ title, effs}) => {
                                     return (
                                         <Tooltip key={`tooltipe-${type}`} title={`x${value}`} placement="top">
                                             <Button key={`eff-${type}`} xs={3} className={`efficiency ${type}`} variant="contained">
-                                                <img src={`/assets/types/${type}.svg`} alt={type} />
+                                                <img src={`${process.env.PUBLIC_URL}/assets/types/${type}.svg`} alt={type} />
                                                 <span>{ type }</span>
                                             </Button>
                                         </Tooltip>

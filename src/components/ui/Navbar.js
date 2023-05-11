@@ -105,7 +105,7 @@ export const Navbar = () => {
                         textDecoration: 'none',
                 }}
                 >
-                    <img src='/pokecheck_logo.svg' alt='pokecheck' style={{width: '7.5em', margin: '0em 1em 0em 0em'}} />
+                    <img src={`${process.env.PUBLIC_URL}/pokecheck_logo.svg`} alt='pokecheck' style={{width: '7.5em', margin: '0em 1em 0em 0em'}} />
                 </Typography>
 
                 {/* Menú para móviles */}
@@ -174,7 +174,7 @@ export const Navbar = () => {
                         textDecoration: 'none',
                     }}
                 >
-                    <img src='/pokecheck_logo.svg' alt='pokecheck' style={{width: '7.5em', margin: '0.5em 2em 0em 2.5em'}} />
+                     <img src={`${process.env.PUBLIC_URL}/pokecheck_logo.svg`} alt='pokecheck' style={{width: '7.5em', margin: '0.5em 2em 0em 2.5em'}} />
                 </Typography>
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                     {
@@ -203,7 +203,8 @@ export const Navbar = () => {
                             
                             <Tooltip title="Menu de usuario">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                    {/* Comento porque de momento no se como va el avatar */}
+                                    {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                                 </IconButton>
                             </Tooltip>
                             <Menu

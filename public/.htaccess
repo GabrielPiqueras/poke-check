@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule ^login($|/) index.html [L]
+RewriteRule ^pokedex($|/) index.html [L]
+RewriteRule ^profile($|/) index.html [L]
+RewriteRule ^account($|/) index.html [L]

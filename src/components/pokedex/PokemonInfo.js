@@ -153,7 +153,7 @@ export const PokemonInfo = () => {
                                     <div id={`types-count-${types.length}`} style={{ display: 'flex', justifyContent: 'center' }}>
                                         {
                                             types.map(({type: { name }}) => {
-                                                return <img key={name} className='pokemon-type' src={`/assets/types/${name}.svg`} alt={name} />
+                                                return <img key={name} className='pokemon-type' src={`${process.env.PUBLIC_URL}/assets/types/${name}.svg`} alt={name} />
                                             })
                                             // ESTILO EN EM: style={{maxWidth: '3em', margin: '1em 0.5em'}}
                                         }
