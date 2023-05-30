@@ -94,7 +94,7 @@ export const Navbar = () => {
                     variant="h6"
                     noWrap
                     component="a"
-                    href="/"
+                    href="/pokecheck/"
                     sx={{
                         mr: 2,
                         display: { xs: 'none', md: 'flex' },

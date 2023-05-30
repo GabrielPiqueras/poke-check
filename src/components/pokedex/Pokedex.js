@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // Icons
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { Helmet } from 'react-helmet';
 
 // Router
 import { useNavigate } from 'react-router-dom';
@@ -46,22 +47,27 @@ export const Pokedex = () => {
   
   // En cualquier caso deberíamos llamar al then() y mostrar lo que devuelve:
     return (
-        <Box sx={{ flexGrow: 1 }} style={{display: 'flex'}}>
-          <Grid container spacing={0}>
-            <Grid item xs={12}>
-              <Item>
-                  <form onSubmit={ handleSubmit } style={{ display: 'flex'}}>
-                    <InputAutocomplete
-                        id="pokemon"
-                        labels={ pokemons }
-                        showDialog={ false }
-                      />
-                    <Button id="search-btn" style={{ marginLeft: '1em'}} type="submit" variant="contained" startIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}>
-                    </Button>
-                  </form>
-              </Item>
-            </Grid>
+    <>
+      <Helmet>
+        <title>Pokedex</title>
+      </Helmet>
+      <Box sx={{ flexGrow: 1 }} style={{display: 'flex'}}>
+        <Grid container spacing={0}>
+          <Grid item xs={12}>
+            <Item>
+                <form onSubmit={ handleSubmit } style={{ display: 'flex'}}>
+                  <InputAutocomplete
+                      id="pokemon"
+                      labels={ pokemons }
+                      showDialog={ false }
+                    />
+                  <Button id="search-btn" style={{ marginLeft: '1em'}} type="submit" variant="contained" startIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}>
+                  </Button>
+                </form>
+            </Item>
           </Grid>
-        </Box>
+        </Grid>
+      </Box>
+    </>
       );
 }
