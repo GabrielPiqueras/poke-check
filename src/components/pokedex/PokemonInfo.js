@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
+import { Helmet } from 'react-helmet';
 
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -56,7 +57,7 @@ export const PokemonInfo = () => {
 
     const { name } = useParams();
     const { data, loading, error } = useFetch(`https://pokeapi.co/api/v2/pokemon/${encodeURI(name)}/`);
-
+    
     const {
         // id,
         order,
@@ -93,6 +94,9 @@ export const PokemonInfo = () => {
 
     return (
         <>
+            <Helmet>
+                <title>{ name[0].toUpperCase() + name.slice(1) }</title>
+            </Helmet>
         {
             (loading)
             ?
