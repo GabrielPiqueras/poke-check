@@ -31,8 +31,9 @@ const PokeCheck = () => {
     }, [user]);
 
     // The light theme is used by default
-    const darkIsEnabled = JSON.parse(localStorage.getItem('isDarkTheme'));
-    const [ isDarkTheme, setIsDarkTheme ] = useState(darkIsEnabled || false);
+    const darkIsEnabled = JSON.parse(localStorage.getItem('isDarkTheme') || true);
+
+    const [ isDarkTheme, setIsDarkTheme ] = useState(darkIsEnabled);
     
     return (
       <ThemeContext.Provider value={{ isDarkTheme, setIsDarkTheme }}>

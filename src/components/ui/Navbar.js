@@ -194,7 +194,7 @@ export const Navbar = () => {
                 
                 {/* Icono para cambiar de tema */}
                 <IconButton sx={{ ml: 1 }} onClick={ changeTheme } color="inherit">
-                    { isDarkTheme ? <Brightness4Icon /> : <Brightness7Icon /> }
+                    { isDarkTheme ? <Brightness7Icon /> : <Brightness4Icon /> }
                 </IconButton>
                 {
                     (logged)
@@ -203,8 +203,7 @@ export const Navbar = () => {
                             
                             <Tooltip title="Menu de usuario">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    {/* Comento porque de momento no se como va el avatar */}
-                                    {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
+                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                                 </IconButton>
                             </Tooltip>
                             <Menu
